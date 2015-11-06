@@ -26,7 +26,7 @@ public class Options extends JPanel{
         // You should select different options based on your applications, and
         // and use a layout manager to make the screen look nice!
         
-        playerName = new JTextField("--Enter Player Name--");
+        playerName = new JTextField("--Enter Player's Name--");
         difficulty = new JSlider(JSlider.HORIZONTAL, 1,10,5);
         difficulty.setMajorTickSpacing(1);
         difficulty.setPaintLabels(true);
