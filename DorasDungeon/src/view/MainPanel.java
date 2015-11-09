@@ -19,7 +19,7 @@ public class MainPanel extends JPanel{
     JLabel optionsLabel;
     public MainPanel()
     {
-            splashButton = new JButton(new ImageIcon("src/images/doras_dungeon_v2.jpg"));            
+            splashButton = new JButton(new ImageIcon("src/images/doras_dungeon.jpg"));            
             add(splashButton);
             
             optionsLabel = new JLabel("No options selected yet.");
