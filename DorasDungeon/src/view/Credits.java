@@ -25,7 +25,7 @@ public class Credits extends JPanel
        label = new JLabel("TEAM 2");
        katie = new JLabel("Katie Dodds: Options Menu");
        ryan = new JLabel("Ryan Bass: Splash Artist, Instructions Panel");
-       colin = new JLabel("Colin Burns: ");
+       colin = new JLabel("Colin Burns: Options Menu");
        dan = new JLabel("Daniel Lavanier: Credits Panel");
        back = new JButton("Return");
        
