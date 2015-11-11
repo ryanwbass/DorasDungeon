@@ -1,6 +1,6 @@
-package com.company.view;
+package view;
 
-import com.company.model.OptionsModel;
+import model.OptionsModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by Katie on 10/30/2015.
  */
-public class OptionsView extends JFrame {
+public class OptionsView extends JPanel {
 
 //    Five Buttons:
     private OptionButton startGameBtn;
@@ -22,16 +22,13 @@ public class OptionsView extends JFrame {
 
     private List<OptionButton> btnList;
 
-    public JPanel panel;
-
     private OptionsModel model;
 
     public OptionsView(OptionsModel model) {
         this.model = model;
 
-        panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-        panel.setBackground(Color.DARK_GRAY);
+        this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        this.setBackground(Color.DARK_GRAY);
 
         // add title label to view
 
@@ -40,8 +37,8 @@ public class OptionsView extends JFrame {
         titleLabel.setBackground(Color.DARK_GRAY);
         titleLabel.setForeground(Color.CYAN);
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        panel.add(titleLabel);
-        panel.add(Box.createVerticalStrut(30));
+        this.add(titleLabel);
+        this.add(Box.createVerticalStrut(30));
 
         // set up Btns on View
 
@@ -54,16 +51,9 @@ public class OptionsView extends JFrame {
 
         for (int i = 0; i < btnList.size(); ++i) {
             btnList.get(i).setText(model.getOptions().get(i));
-            panel.add(btnList.get(i));
-            panel.add(Box.createVerticalStrut(20));
+            this.add(btnList.get(i));
+            this.add(Box.createVerticalStrut(20));
         }
-
-        this.setContentPane(panel);
-        this.setSize(800, 900);
-        this.setLocationRelativeTo(null);
-        this.setTitle("Dora's Dungeon: Main Menu");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
     }
 
     public void addStartGameBtnListener(ActionListener action) {

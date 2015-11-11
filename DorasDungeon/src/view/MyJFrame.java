@@ -5,6 +5,7 @@
  */
 package view;
 
+import java.awt.Color;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -17,6 +18,8 @@ public class MyJFrame extends JFrame {
         super ("IST Java Final Project");
         MyJPanel mjp = new MyJPanel();
         getContentPane().add(mjp,"Center");
+        setLocationRelativeTo(null);
+        
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize (640, 480);
         setVisible(true);         

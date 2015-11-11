@@ -1,6 +1,6 @@
-package com.company.view;
+package view;
 
-import com.company.model.GameDifficulty;
+import model.GameDifficulty;
 
 import javax.swing.*;
 import java.awt.*;

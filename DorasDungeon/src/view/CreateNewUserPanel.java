@@ -1,6 +1,6 @@
-package com.company.view;
+package view;
 
-import com.company.model.UserList;
+import model.UserList;
 
 import javax.swing.*;
 import java.awt.*;
