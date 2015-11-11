@@ -1,13 +1,13 @@
 package controller;
 
-import com.company.model.GameDifficulty;
-import com.company.model.OptionsModel;
-import com.company.model.UserList;
-import com.company.view.*;
+import model.OptionsModel;
+import view.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import model.GameDifficulty;
+import model.UserList;
 
 /**
  * Created by Katie on 10/30/2015.
@@ -33,14 +33,13 @@ public class OptionsController {
         view.addSetDifficultyBtnListener(new SetDifficultyListener());
         view.addQuitGameBtnListener(new QuitGameListener());
 
-    }
-
-    // add inner classes to link view to model
+    }   
 
     private class StartGameListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             // do stuff to start the game
+            System.out.println("Clickity");
             StartGameFrame frame = new StartGameFrame();
 
             frame.setVisible(true);
@@ -84,7 +83,8 @@ public class OptionsController {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            view.dispose();
+            JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(view);
+            topFrame.dispose();
 
         }
     }
