@@ -44,6 +44,7 @@ public class OptionsController {
 
     public String getMostRecentOptionChange() {
         return mostRecentOptionChange;
+        // this is a test
     }
     
     public void setMostRecentOptionChange(String option) {
