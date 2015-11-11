@@ -26,7 +26,8 @@ public class MyJPanel extends JPanel implements ActionListener {
 	public MyJPanel()
 	{
             super();
-            setBackground(Color.gray);		
+            setBackground(Color.DARK_GRAY);
+            setForeground(Color.CYAN);
             setLayout(new BorderLayout());
             
 
@@ -44,9 +45,7 @@ public class MyJPanel extends JPanel implements ActionListener {
                                     
             //add action listeners for buttons to show new panel
             buttonsPane.options.addActionListener(this);
-            
-            //add action listener for buttons to return to main panel
-//            optPane.retButton.addActionListener(this);
+            optionsView.returnButton.addActionListener(this);
                                    
         }
         
@@ -68,13 +67,13 @@ public class MyJPanel extends JPanel implements ActionListener {
             add(optionsView, BorderLayout.CENTER);
         
         }
-//        else if (obj == optionsView.retButton)
-//        {
-//            clearTopPanel();
-//            //How ould I modify this to display my options on the optionsLabel located on the mainPane???
-//            
-//            add(mainPane, BorderLayout.CENTER);
-//        }
+        else if (obj == optionsView.returnButton)
+        {
+            clearTopPanel();
+            //How ould I modify this to display my options on the optionsLabel located on the mainPane???
+            
+            add(mainPane, BorderLayout.CENTER);
+        }
    }
 
 }
