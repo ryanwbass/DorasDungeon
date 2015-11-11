@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.OptionsController;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -18,10 +19,12 @@ import model.OptionsModel;
  */
 public class MyJPanel extends JPanel implements ActionListener {
             
-        ButtonPanel buttonsPane;
-        MainPanel mainPane;
+        public ButtonPanel buttonsPane;
+        public MainPanel mainPane;
 //        Options optPane;
-        OptionsView optionsView;
+        public OptionsView optionsView;
+        public OptionsModel optionsModel;
+        public OptionsController optionsController;
     
 	public MyJPanel()
 	{
@@ -39,8 +42,9 @@ public class MyJPanel extends JPanel implements ActionListener {
             add(buttonsPane, BorderLayout.SOUTH);
             
             //create instances of other panels, but don't add them yet
-            OptionsModel optionsModel = new OptionsModel();
+            optionsModel = new OptionsModel();
             optionsView = new OptionsView(optionsModel);
+            optionsController = new OptionsController(optionsView, optionsModel, this);
             
                                     
             //add action listeners for buttons to show new panel
@@ -51,10 +55,22 @@ public class MyJPanel extends JPanel implements ActionListener {
         
         public void clearTopPanel()
         {
-            remove(mainPane);
-            remove(optionsView);
+//            remove(mainPane);
+//            remove(optionsView);
+            
+            BorderLayout layout = (BorderLayout) this.getLayout();
+            this.remove(layout.getLayoutComponent(BorderLayout.CENTER));
+            
             revalidate();
             repaint();
+        }
+        
+        public void clearTopPanel(JPanel panel) {
+        
+            remove(panel);
+            revalidate();
+            repaint();
+        
         }
         
 
@@ -63,7 +79,9 @@ public class MyJPanel extends JPanel implements ActionListener {
         Object obj = e.getSource();
         if (obj==buttonsPane.options)
         {            
-            clearTopPanel();                        
+            clearTopPanel();    
+            
+            
             add(optionsView, BorderLayout.CENTER);
         
         }
@@ -71,6 +89,7 @@ public class MyJPanel extends JPanel implements ActionListener {
         {
             clearTopPanel();
             //How ould I modify this to display my options on the optionsLabel located on the mainPane???
+            mainPane.optionsLabel.setText(optionsController.getMostRecentOptionChange());
             
             add(mainPane, BorderLayout.CENTER);
         }

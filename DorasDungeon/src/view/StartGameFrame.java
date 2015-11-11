@@ -35,6 +35,10 @@ public class StartGameFrame extends JPanel implements ActionListener {
         label.setForeground(Color.CYAN);
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.add(label);
+        
+        // update mostRecentOptionChange
+        parentPanel.optionsController.setMostRecentOptionChange("Game Started");
+        
     }
 
     @Override

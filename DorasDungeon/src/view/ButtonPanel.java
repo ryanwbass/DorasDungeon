@@ -6,6 +6,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -14,21 +15,27 @@ import javax.swing.JPanel;
  * @author Katie
  */
 public class ButtonPanel extends JPanel{
-    JButton options;
-    JButton instructions;
-    JButton credits;  
+    OptionButton options;
+    OptionButton instructions;
+    OptionButton credits;  
     
     ButtonPanel()
           
     {
         super();       
-        options = new JButton("Options");
-        instructions = new JButton("Instructions");
-        credits = new JButton("Credits");
+        options = new OptionButton();
+        options.setText("Options");
+        instructions = new OptionButton();
+        instructions.setText("Instructions");
+        credits = new OptionButton();
+        credits.setText("Credits");
 
         add(options, BorderLayout.SOUTH);
         add(instructions, BorderLayout.SOUTH);
-        add(credits, BorderLayout.SOUTH);        
-                
+        add(credits, BorderLayout.SOUTH);       
+        
+        setBackground(Color.DARK_GRAY);
+        setForeground(Color.CYAN);
+            
     }
 }

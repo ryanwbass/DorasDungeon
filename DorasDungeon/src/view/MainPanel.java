@@ -5,6 +5,8 @@
  */
 package view;
 
+import java.awt.Color;
+import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -19,11 +21,15 @@ public class MainPanel extends JPanel{
     JLabel optionsLabel;
     public MainPanel()
     {
-            splashButton = new JButton(new ImageIcon("src/images/doras_dungeon.jpg"));            
-            add(splashButton);
-            
-            optionsLabel = new JLabel("No options selected yet.");
-            add(optionsLabel);
-            
+        setBackground(Color.DARK_GRAY);
+        
+        splashButton = new JButton(new ImageIcon("src/images/doras_dungeon.jpg"));            
+        add(splashButton);
+
+        optionsLabel = new JLabel("No options selected yet.");
+        optionsLabel.setForeground(Color.CYAN);
+        optionsLabel.setFont(new Font("Ariel", Font.PLAIN, 20));
+        add(optionsLabel);
+
     }
 }

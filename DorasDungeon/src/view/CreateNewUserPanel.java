@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by Katie on 11/1/2015.
  */
-public class CreateNewUserPanel extends JFrame {
+public class CreateNewUserPanel extends JPanel {
 
     public JButton submit, returnToMainMenu;
     private JTextField firstNameField;
@@ -19,26 +19,24 @@ public class CreateNewUserPanel extends JFrame {
 
         super();
 
-        JPanel panel = new JPanel();
+        this.setBackground(Color.DARK_GRAY);
+        this.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
-        panel.setBackground(Color.DARK_GRAY);
-        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-
-        returnToMainMenu = new JButton("Main Menu");
+        returnToMainMenu = new JButton("Options Menu");
         returnToMainMenu.setMargin(new Insets(10, 10, 10, 10));
         returnToMainMenu.setBackground(Color.DARK_GRAY);
         returnToMainMenu.setForeground(Color.CYAN);
         returnToMainMenu.setFont(new Font("Ariel", Font.PLAIN, 20));
         returnToMainMenu.setAlignmentX(Component.CENTER_ALIGNMENT);
-        panel.add(returnToMainMenu);
+        this.add(returnToMainMenu);
 
         JLabel title = new JLabel("Create a New User");
         title.setFont(new Font("Ariel", Font.PLAIN, 30));
         title.setForeground(Color.CYAN);
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
-        panel.add(title);
-        panel.add(Box.createVerticalStrut(50));
+        this.add(title);
+        this.add(Box.createVerticalStrut(50));
 
 //        field1 holds the first name label and text field
         JPanel field1 = new JPanel(new FlowLayout());
@@ -53,7 +51,7 @@ public class CreateNewUserPanel extends JFrame {
         firstNameField.setFont(new Font("Ariel", Font.PLAIN, 25));
         field1.add(firstNameField);
 
-        panel.add(field1);
+        this.add(field1);
 
 //          field2 holds the last name label and text field
         JPanel field2 = new JPanel(new FlowLayout());
@@ -68,7 +66,7 @@ public class CreateNewUserPanel extends JFrame {
         lastNameField.setFont(new Font("Ariel", Font.PLAIN, 25));
         field2.add(lastNameField);
 
-        panel.add(field2);
+        this.add(field2);
 
         submit = new JButton("Submit");
         submit.setMargin(new Insets(10, 10, 10, 10));
@@ -76,15 +74,7 @@ public class CreateNewUserPanel extends JFrame {
         submit.setForeground(Color.CYAN);
         submit.setFont(new Font("Ariel", Font.PLAIN, 20));
         submit.setAlignmentX(Component.CENTER_ALIGNMENT);
-        panel.add(submit);
-
-        this.setContentPane(panel);
-        this.setLocationRelativeTo(null);
-//        this.setSize(400, 100);
-        this.pack();
-        this.setTitle("Add User Option");
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
+        this.add(submit);
     }
 
     public void addSubmitBtnListener(ActionListener action) {

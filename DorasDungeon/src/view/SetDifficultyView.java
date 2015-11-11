@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by Katie on 11/3/2015.
  */
-public class SetDifficultyView extends JFrame {
+public class SetDifficultyView extends JPanel {
 
     private GameDifficulty model;
     private JSlider slider;
@@ -19,22 +19,20 @@ public class SetDifficultyView extends JFrame {
     public SetDifficultyView(GameDifficulty model) {
         this.model = model;
 
-        JPanel panel = new JPanel();
+        this.setBackground(Color.DARK_GRAY);
+        this.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
-        panel.setBackground(Color.DARK_GRAY);
-        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-
-        returnToMainMenu = new JButton("Main Menu");
+        returnToMainMenu = new JButton("Options Menu");
         returnToMainMenu.setMargin(new Insets(10, 10, 10, 10));
         returnToMainMenu.setBackground(Color.DARK_GRAY);
         returnToMainMenu.setForeground(Color.CYAN);
         returnToMainMenu.setFont(new Font("Ariel", Font.PLAIN, 20));
         returnToMainMenu.setAlignmentX(Component.CENTER_ALIGNMENT);
-        panel.add(returnToMainMenu);
+        this.add(returnToMainMenu);
 
         // JSlider should go here
-        panel.add(Box.createVerticalStrut(20));
+        this.add(Box.createVerticalStrut(20));
         slider = new JSlider(JSlider.HORIZONTAL, 1, 3, 1);
         slider.setMajorTickSpacing(1);
         slider.setPaintTicks(true);
@@ -42,8 +40,8 @@ public class SetDifficultyView extends JFrame {
         slider.setForeground(Color.CYAN);
         slider.setBackground(Color.DARK_GRAY);
         slider.setFont(new Font("Ariel", Font.ITALIC, 15));
-        panel.add(slider);
-        panel.add(Box.createVerticalStrut(20));
+        this.add(slider);
+        this.add(Box.createVerticalStrut(20));
 
         setNewDifficulty = new JButton("Set Difficulty");
         setNewDifficulty.setMargin(new Insets(10, 10, 10, 10));
@@ -51,13 +49,7 @@ public class SetDifficultyView extends JFrame {
         setNewDifficulty.setForeground(Color.CYAN);
         setNewDifficulty.setFont(new Font("Ariel", Font.PLAIN, 20));
         setNewDifficulty.setAlignmentX(Component.CENTER_ALIGNMENT);
-        panel.add(setNewDifficulty);
-
-        this.setContentPane(panel);
-        this.setLocationRelativeTo(null);
-        this.setSize(400, 300);
-        this.setTitle("Remove Selected User");
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.add(setNewDifficulty);
 
     }
 

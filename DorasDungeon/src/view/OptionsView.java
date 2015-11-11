@@ -13,7 +13,8 @@ import java.util.List;
  */
 public class OptionsView extends JPanel {
 
-//    Five Buttons:
+    public OptionButton returnButton;
+    
     private OptionButton startGameBtn;
     private OptionButton newUserBtn;
     private OptionButton removeUserBtn;
@@ -30,17 +31,11 @@ public class OptionsView extends JPanel {
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         this.setBackground(Color.DARK_GRAY);
 
-        // add title label to view
-
-        JLabel titleLabel = new JLabel("Dora's Dungeon");
-        titleLabel.setFont(new Font("Ariel", Font.PLAIN, 40));
-        titleLabel.setBackground(Color.DARK_GRAY);
-        titleLabel.setForeground(Color.CYAN);
-        titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.add(titleLabel);
-        this.add(Box.createVerticalStrut(30));
-
         // set up Btns on View
+        returnButton = new OptionButton();
+        returnButton.setText("Return to Main Menu");
+        this.add(returnButton);
+        this.add(Box.createVerticalStrut(20));
 
         btnList = new ArrayList<>();
         btnList.add(startGameBtn = new OptionButton());
@@ -55,7 +50,7 @@ public class OptionsView extends JPanel {
             this.add(Box.createVerticalStrut(20));
         }
     }
-
+    
     public void addStartGameBtnListener(ActionListener action) {
         startGameBtn.addActionListener(action);
     }

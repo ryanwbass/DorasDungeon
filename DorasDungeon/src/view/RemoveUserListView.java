@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by Katie on 11/2/2015.
  */
-public class RemoveUserListView extends JFrame {
+public class RemoveUserListView extends JPanel {
 
     private UserList model;
     private JButton returnToMainMenu, deleteUser;
@@ -19,19 +19,17 @@ public class RemoveUserListView extends JFrame {
 
         this.model = model;
 
-        JPanel panel = new JPanel();
+        this.setBackground(Color.DARK_GRAY);
+        this.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
-        panel.setBackground(Color.DARK_GRAY);
-        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-
-        returnToMainMenu = new JButton("Main Menu");
+        returnToMainMenu = new JButton("Options Menu");
         returnToMainMenu.setMargin(new Insets(10, 10, 10, 10));
         returnToMainMenu.setBackground(Color.DARK_GRAY);
         returnToMainMenu.setForeground(Color.CYAN);
         returnToMainMenu.setFont(new Font("Ariel", Font.PLAIN, 20));
         returnToMainMenu.setAlignmentX(Component.CENTER_ALIGNMENT);
-        panel.add(returnToMainMenu);
+        this.add(returnToMainMenu);
 
         list = new JList(model.getUsers());
         list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -41,7 +39,7 @@ public class RemoveUserListView extends JFrame {
         JScrollPane listScroller = new JScrollPane(list);
         listScroller.setPreferredSize(new Dimension(200, 300));
 
-        panel.add(listScroller);
+        this.add(listScroller);
 
         deleteUser = new JButton("Delete User");
         deleteUser.setMargin(new Insets(10, 10, 10, 10));
@@ -49,14 +47,7 @@ public class RemoveUserListView extends JFrame {
         deleteUser.setForeground(Color.CYAN);
         deleteUser.setFont(new Font("Ariel", Font.PLAIN, 20));
         deleteUser.setAlignmentX(Component.CENTER_ALIGNMENT);
-        panel.add(deleteUser);
-
-        this.setContentPane(panel);
-        this.setLocationRelativeTo(null);
-        this.pack();
-        this.setTitle("Remove Selected User");
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
+        this.add(deleteUser);
     }
 
     public void AddReturnToMainMenuListener(ActionListener action) {
