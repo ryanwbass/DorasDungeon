@@ -18,9 +18,6 @@ public class Main {
      */
     public static void main(String[] args) {
         MyJFrame mjf = new MyJFrame();
-        // test
-        // test 2
-        //  test  
     }
     
 }

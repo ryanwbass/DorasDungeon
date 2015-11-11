@@ -1,14 +1,16 @@
-package com.company.controller;
+package controller;
 
-import com.company.model.OptionsModel;
-import com.company.model.User;
-import com.company.model.UserList;
-import com.company.view.CreateNewUserPanel;
-import com.company.view.OptionsView;
+import java.awt.BorderLayout;
+import model.OptionsModel;
+import model.User;
+import model.UserList;
+import view.CreateNewUserPanel;
+import view.OptionsView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import view.MyJPanel;
 
 /**
  * Created by Katie on 11/1/2015.
@@ -16,11 +18,15 @@ import java.awt.event.ActionListener;
 public class CreateNewUserController {
 
     private CreateNewUserPanel view;
-    private UserList model;
+    private UserList userList;
+    
+    private MyJPanel parentPanel;
 
-    public CreateNewUserController(CreateNewUserPanel view, UserList model) {
+    public CreateNewUserController(CreateNewUserPanel view, UserList userList, MyJPanel parentPanel) {
         this.view = view;
-        this.model = model;
+        this.userList = userList;
+        
+        this.parentPanel = parentPanel;
 
         view.addSubmitBtnListener(new SubmitNewUserListener());
         view.addReturnToMainMenuListener(new ReturnToMainMenuListener());
@@ -33,7 +39,7 @@ public class CreateNewUserController {
             // do work to create and add user to user list
             if (view.getFirstNameField().length() > 0 && view.getLastNameField().length() > 0) {
 
-                model.addUser(new User(view.getFirstNameField(), view.getLastNameField()));
+                userList.addUser(new User(view.getFirstNameField(), view.getLastNameField()));
                 System.out.println("New User Added");
 
                 view.clearNameFields();
@@ -44,7 +50,12 @@ public class CreateNewUserController {
     private class ReturnToMainMenuListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            view.dispose();
+            
+            parentPanel.clearTopPanel(view);
+           
+            
+            parentPanel.add(parentPanel.optionsView, BorderLayout.CENTER);
+           
         }
     }
 }
