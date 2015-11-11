@@ -4,9 +4,8 @@
  * and open the template in the editor.
  */
 package view;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import javax.swing.*;
 
 /**
  *
@@ -31,11 +30,21 @@ public class Credits extends JPanel
        back = new JButton("Return");
        
        add(label);
+       add(Box.createVerticalStrut(20));
        add(katie);
+       add(Box.createVerticalStrut(20));
        add(ryan);
+       add(Box.createVerticalStrut(20));
        add(colin);
+       add(Box.createVerticalStrut(20));
        add(dan);
+       add(Box.createVerticalStrut(20));
        add(back);
+    }
+    
+    public void addReturnButtonListener(ActionListener al)
+    {
+        back.addActionListener(al);
     }
     
     
