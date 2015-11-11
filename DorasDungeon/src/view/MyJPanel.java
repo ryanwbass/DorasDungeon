@@ -23,6 +23,7 @@ public class MyJPanel extends JPanel implements ActionListener {
         public MainPanel mainPane;
 //        Options optPane;
         public OptionsView optionsView;
+        public InstructionsView instructionsView;
         public OptionsModel optionsModel;
         public OptionsController optionsController;
     
@@ -45,11 +46,14 @@ public class MyJPanel extends JPanel implements ActionListener {
             optionsModel = new OptionsModel();
             optionsView = new OptionsView(optionsModel);
             optionsController = new OptionsController(optionsView, optionsModel, this);
+            instructionsView = new InstructionsView();
             
                                     
             //add action listeners for buttons to show new panel
             buttonsPane.options.addActionListener(this);
             optionsView.returnButton.addActionListener(this);
+            buttonsPane.instructions.addActionListener(this);
+            instructionsView.returnButton.addActionListener(this);
                                    
         }
         
@@ -85,14 +89,33 @@ public class MyJPanel extends JPanel implements ActionListener {
             add(optionsView, BorderLayout.CENTER);
         
         }
+        
         else if (obj == optionsView.returnButton)
         {
             clearTopPanel();
-            //How ould I modify this to display my options on the optionsLabel located on the mainPane???
+            //How could I modify this to display my options on the optionsLabel located on the mainPane???
             mainPane.optionsLabel.setText(optionsController.getMostRecentOptionChange());
             
             add(mainPane, BorderLayout.CENTER);
         }
+        
+         else if (obj == instructionsView.returnButton)
+        {
+            clearTopPanel();
+            
+            
+            add(mainPane, BorderLayout.CENTER);
+        }
+        
+        else if(obj == buttonsPane.instructions){
+            
+            clearTopPanel();
+            System.out.println("test");
+            add(instructionsView, BorderLayout.CENTER);
+        }
+            
    }
+    
+    
 
 }
