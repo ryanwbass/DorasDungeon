@@ -20,6 +20,8 @@ public class OptionsController {
     private UserList userList;
     private GameDifficulty difficultySetting;
     
+    private String mostRecentOptionChange;
+    
     private MyJPanel parentPanel;
 
     public OptionsController(OptionsView view, OptionsModel model, MyJPanel parentPanel) {
@@ -39,6 +41,14 @@ public class OptionsController {
         view.addQuitGameBtnListener(new QuitGameListener());
 
     }   
+
+    public String getMostRecentOptionChange() {
+        return mostRecentOptionChange;
+    }
+    
+    public void setMostRecentOptionChange(String option) {
+        mostRecentOptionChange = option;
+    }
 
     private class StartGameListener implements ActionListener {
         @Override
