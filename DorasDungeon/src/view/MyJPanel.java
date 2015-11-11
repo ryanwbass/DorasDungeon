@@ -24,6 +24,7 @@ public class MyJPanel extends JPanel implements ActionListener {
 //        Options optPane;
         public OptionsView optionsView;
         public InstructionsView instructionsView;
+        public Credits creditsView;
         public OptionsModel optionsModel;
         public OptionsController optionsController;
     
@@ -47,6 +48,7 @@ public class MyJPanel extends JPanel implements ActionListener {
             optionsView = new OptionsView(optionsModel);
             optionsController = new OptionsController(optionsView, optionsModel, this);
             instructionsView = new InstructionsView();
+            creditsView = new Credits();
             
                                     
             //add action listeners for buttons to show new panel
@@ -54,6 +56,8 @@ public class MyJPanel extends JPanel implements ActionListener {
             optionsView.returnButton.addActionListener(this);
             buttonsPane.instructions.addActionListener(this);
             instructionsView.returnButton.addActionListener(this);
+            buttonsPane.credits.addActionListener(this);
+            creditsView.back.addActionListener(this);
                                    
         }
         
@@ -112,6 +116,22 @@ public class MyJPanel extends JPanel implements ActionListener {
             clearTopPanel();
             System.out.println("test");
             add(instructionsView, BorderLayout.CENTER);
+        }
+        
+        else if(obj == buttonsPane.credits)
+        {
+            System.out.println("Test");
+            clearTopPanel();
+            add(creditsView, BorderLayout.CENTER);
+        }
+        
+        else if(obj == creditsView.back)
+        {
+            
+            clearTopPanel();
+            
+            
+            add(mainPane, BorderLayout.CENTER);
         }
             
    }
