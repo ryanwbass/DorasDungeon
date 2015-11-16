@@ -56,8 +56,11 @@ public class OptionsController {
         public void actionPerformed(ActionEvent e) {
             // do stuff to start the game
             parentPanel.clearTopPanel(view);
-            StartGameFrame frame = new StartGameFrame(parentPanel);
-            parentPanel.add(frame, BorderLayout.CENTER);
+
+            GameboardView gameboard = new GameboardView(parentPanel);
+            GameboardController gameboardController = new GameboardController(gameboard, parentPanel);
+
+            parentPanel.add(gameboard, BorderLayout.CENTER);
           
         }
     }
