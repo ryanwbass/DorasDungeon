@@ -8,11 +8,6 @@ import java.util.List;
  */
 public class OptionsModel {
 
-//    Possible User Options
-    // title
-    // action (thing that it does)
-    // description
-
     private List<String> options;
 
     public OptionsModel() {

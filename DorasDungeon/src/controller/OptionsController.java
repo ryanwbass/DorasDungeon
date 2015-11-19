@@ -57,8 +57,8 @@ public class OptionsController {
             // do stuff to start the game
             parentPanel.clearTopPanel(view);
 
-            GameboardView gameboard = new GameboardView(parentPanel);
-            GameboardController gameboardController = new GameboardController(gameboard, parentPanel);
+            GameOptionView gameboard = new GameOptionView(parentPanel);
+            GameController gameboardController = new GameController(gameboard, parentPanel);
 
             parentPanel.add(gameboard, BorderLayout.CENTER);
           

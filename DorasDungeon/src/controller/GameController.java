@@ -9,14 +9,18 @@ import java.awt.event.ActionListener;
 
 public class GameController {
 
-    private GameOptionView gameboard;
+    private GameOptionView gameOptionView;
     private MyJPanel parentPanel;
 
     public GameController(GameOptionView gameboard, MyJPanel parentPanel) {
 
-        this.gameboard = gameboard;
+        this.gameOptionView = gameboard;
         this.parentPanel = parentPanel;
-        gameboard.addReturnToMainMenuBtnListener(new ReturnToMainMenuListener());
+        gameOptionView.addReturnToMainMenuBtnListener(new ReturnToMainMenuListener());
+        gameOptionView.addMoveLeftBtnListener(new MoveLeftListener());
+        gameOptionView.addMoveRightBtnListener(new MoveRightListener());
+        gameOptionView.addMoveUpBtnListener(new MoveUpListener());
+        gameOptionView.addMoveDownBtnListener(new MoveDownListener());
 
     }
 
@@ -24,8 +28,38 @@ public class GameController {
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("Working");
-            parentPanel.clearTopPanel(gameboard);
+            parentPanel.clearTopPanel(gameOptionView);
             parentPanel.add(parentPanel.optionsView, BorderLayout.CENTER);
+        }
+    }
+
+
+    private class MoveLeftListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            gameOptionView.getGameboard().movePlayerLeft();
+        }
+    }
+
+    private class MoveRightListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            gameOptionView.getGameboard().movePlayerRight();
+        }
+    }
+
+    private class MoveUpListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            gameOptionView.getGameboard().movePlayerUp();
+        }
+    }
+
+
+    private class MoveDownListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            gameOptionView.getGameboard().movePlayerDown();
         }
     }
 }
