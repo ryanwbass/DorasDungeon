@@ -3,12 +3,14 @@ package view;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.List;
 
 /**
  * Created by Katie on 11/16/2015.
  */
-public class Gameboard extends JPanel {
+public class Gameboard extends JPanel implements KeyListener {
 
     private boolean[][] gamePoints = new boolean[][]{
         {true,  true,   true,    true,    true,    true,    true,    true,    true,    true },
@@ -68,6 +70,10 @@ public class Gameboard extends JPanel {
             }
         }
 
+
+        this.addKeyListener(this);
+        this.setFocusable(true);
+//        this.requestFocusInWindow();
     }
 
     private void atEnd() {
@@ -77,6 +83,11 @@ public class Gameboard extends JPanel {
             restartGame();
         }
 
+    }
+
+    @Override
+    public boolean isFocusTraversable() {
+        return true;
     }
 
     private void restartGame() {
@@ -195,5 +206,20 @@ public class Gameboard extends JPanel {
 
     public int getPlayerPositionY() {
         return playerPositionY;
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        System.out.println("key pressed");
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
     }
 }
