@@ -40,8 +40,9 @@ public class Gameboard extends JPanel implements KeyListener {
     private final int endCoordinateY = 4;
 
     public Gameboard() {
-
-
+        
+        setFocusable(true);
+        requestFocusInWindow();
         this.gameLabels = new JLabel[rows][cols];
 
 //        TODO: change size
