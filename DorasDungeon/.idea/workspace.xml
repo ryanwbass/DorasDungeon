@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc1f7e6e-4911-442e-b7e7-fbe3ea542c91" name="Default" comment="Merge branch 'master' of https://github.com/KaitlynDodds/DorasDungeon&#10;&#10;Conflicts:&#10;&#9;DorasDungeon/src/controller/GameController.java&#10;&#9;DorasDungeon/src/view/GameOptionView.java&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/images/Thumbs.db" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/controller/keyListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DorasDungeon/view/Gameboard.class" afterPath="$PROJECT_DIR$/out/production/DorasDungeon/view/Gameboard.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/Gameboard.java" afterPath="$PROJECT_DIR$/src/view/Gameboard.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/view/MyJPanel.java" afterPath="$PROJECT_DIR$/src/view/MyJPanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DorasDungeon.iws" />
@@ -28,7 +26,7 @@
     <favorites_list name="DorasDungeon" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.79960513">
+    <splitter split-orientation="horizontal" split-proportion="0.25053996">
       <split-first>
         <leaf>
           <file leaf-file-name="GameController.java" pinned="false" current-in-tab="false">
@@ -46,7 +44,7 @@
           <file leaf-file-name="GameOptionView.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/view/GameOptionView.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-23.5">
+                <state vertical-scroll-proportion="-50.94737">
                   <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
                   <folding>
                     <element signature="e#1639#1640#0" expanded="true" />
@@ -65,10 +63,20 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Gameboard.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/controller/Main.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.5277778">
+                  <caret line="23" column="1" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Gameboard.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/view/Gameboard.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.22222222">
+                <state vertical-scroll-proportion="0.0">
                   <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -95,10 +103,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="OptionsController.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/controller/OptionsController.java">
+          <file leaf-file-name="NavigationController.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/controller/NavigationController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
+                <state vertical-scroll-proportion="-0.8055556">
                   <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
                   <folding />
                 </state>
@@ -118,10 +126,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="MyJFrame.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="MyJFrame.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/view/MyJFrame.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.25">
+                <state vertical-scroll-proportion="0.0">
                   <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
                   <folding />
                 </state>
@@ -163,7 +171,6 @@
         <option value="$PROJECT_DIR$/src/model/UserList.java" />
         <option value="$PROJECT_DIR$/src/model/GameDifficulty.java" />
         <option value="$PROJECT_DIR$/src/model/User.java" />
-        <option value="$PROJECT_DIR$/src/controller/Main.java" />
         <option value="$PROJECT_DIR$/src/view/StartGameFrame.java" />
         <option value="$PROJECT_DIR$/src/controller/OptionsController.java" />
         <option value="$PROJECT_DIR$/src/controller/GameboardController.java" />
@@ -173,6 +180,8 @@
         <option value="$PROJECT_DIR$/src/controller/GameController.java" />
         <option value="$PROJECT_DIR$/src/view/GameOptionView.java" />
         <option value="$PROJECT_DIR$/src/view/Gameboard.java" />
+        <option value="$PROJECT_DIR$/src/controller/NavigationController.java" />
+        <option value="$PROJECT_DIR$/src/controller/Main.java" />
       </list>
     </option>
   </component>
@@ -624,7 +633,7 @@
       <workItem from="1447878159921" duration="4635000" />
       <workItem from="1447957459065" duration="7023000" />
       <workItem from="1448044794255" duration="319000" />
-      <workItem from="1448045883261" duration="6723000" />
+      <workItem from="1448045883261" duration="7645000" />
     </task>
     <task id="LOCAL-00001" summary="Testing with netbeans">
       <created>1447274696621</created>
@@ -656,11 +665,23 @@
       <option name="project" value="LOCAL" />
       <updated>1447968303928</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Merge branch 'master' of https://github.com/KaitlynDodds/DorasDungeon&#10;&#10;Conflicts:&#10;&#9;DorasDungeon/src/controller/GameController.java&#10;&#9;DorasDungeon/src/view/GameOptionView.java&#10;">
+      <created>1448053176925</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1448053176925</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Merge branch 'master' of https://github.com/KaitlynDodds/DorasDungeon&#10;&#10;Conflicts:&#10;&#9;DorasDungeon/src/controller/GameController.java&#10;&#9;DorasDungeon/src/view/GameOptionView.java&#10;">
+      <created>1448054082418</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1448054082418</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24156000" />
+    <option name="totallyTimeSpent" value="25078000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="2182" height="1402" extended-state="6" />
@@ -677,7 +698,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3030057" sideWeight="0.49809706" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3392157" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33920076" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32981315" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -817,7 +838,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/OptionsController.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/NavigationController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
@@ -904,7 +925,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/OptionsController.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/NavigationController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
@@ -983,7 +1004,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/OptionsController.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/NavigationController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
@@ -1057,7 +1078,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/OptionsController.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/NavigationController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1113,7 +1134,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/OptionsController.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/NavigationController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="61" column="60" selection-start-line="61" selection-start-column="60" selection-end-line="61" selection-end-column="60" />
@@ -1146,13 +1167,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -1192,14 +1206,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/OptionsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/OptionsView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1208,24 +1214,6 @@
             <element signature="e#1937#1938#0" expanded="true" />
             <element signature="e#1995#1996#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/MyJPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="134" column="9" selection-start-line="134" selection-start-column="9" selection-end-line="134" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/MyJFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1239,9 +1227,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/Gameboard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6504#6505#0" expanded="true" />
+            <element signature="e#6553#6554#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/GameOptionView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.5">
+        <state vertical-scroll-proportion="-50.94737">
           <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
           <folding>
             <element signature="e#1639#1640#0" expanded="true" />
@@ -1259,15 +1259,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/Gameboard.java">
+    <entry file="file://$PROJECT_DIR$/src/view/MyJFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22222222">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/MyJPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="134" column="9" selection-start-line="134" selection-start-column="9" selection-end-line="134" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6504#6505#0" expanded="true" />
-            <element signature="e#6553#6554#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/NavigationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.8055556">
+          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5277778">
+          <caret line="23" column="1" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>

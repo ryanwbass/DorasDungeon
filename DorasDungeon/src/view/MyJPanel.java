@@ -5,7 +5,7 @@
  */
 package view;
 
-import controller.OptionsController;
+import controller.NavigationController;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -26,7 +26,7 @@ public class MyJPanel extends JPanel implements ActionListener {
         public InstructionsView instructionsView;
         public Credits creditsView;
         public OptionsModel optionsModel;
-        public OptionsController optionsController;
+        public NavigationController optionsController;
     
 	public MyJPanel()
 	{
@@ -46,7 +46,7 @@ public class MyJPanel extends JPanel implements ActionListener {
             //create instances of other panels, but don't add them yet
             optionsModel = new OptionsModel();
             optionsView = new OptionsView(optionsModel);
-            optionsController = new OptionsController(optionsView, optionsModel, this);
+            optionsController = new NavigationController(optionsView, optionsModel, this);
             instructionsView = new InstructionsView();
             creditsView = new Credits();
             

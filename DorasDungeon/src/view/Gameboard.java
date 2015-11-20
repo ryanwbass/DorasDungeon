@@ -7,9 +7,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.List;
 
-/**
- * Created by Katie on 11/16/2015.
- */
 public class Gameboard extends JPanel implements KeyListener {
 
     private boolean[][] gamePoints = new boolean[][]{
@@ -84,11 +81,6 @@ public class Gameboard extends JPanel implements KeyListener {
             restartGame();
         }
 
-    }
-
-    @Override
-    public boolean isFocusTraversable() {
-        return true;
     }
 
     private void restartGame() {
