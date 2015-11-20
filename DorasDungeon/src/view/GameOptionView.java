@@ -5,6 +5,7 @@ import javafx.scene.layout.HBox;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 /**
  * Created by Katie on 11/11/2015.
@@ -30,7 +31,7 @@ public class GameOptionView extends JPanel {
         returnToMain = new OptionButton();
         returnToMain.setText("Return to Options");
         box.add(returnToMain);
-
+/*
         moveLeft = new OptionButton();
         moveLeft.setText("<");
         box.add(moveLeft);
@@ -46,7 +47,7 @@ public class GameOptionView extends JPanel {
         moveUp = new OptionButton();
         moveUp.setText("^");
         box.add(moveUp);
-
+*/
         this.add(box, BorderLayout.SOUTH);
 
     }
@@ -59,20 +60,33 @@ public class GameOptionView extends JPanel {
         returnToMain.addActionListener(action);
     }
 
-    public void addMoveLeftBtnListener(ActionListener action) {
-        moveLeft.addActionListener(action);
+    public void addMoveLeftBtnListener(KeyEvent e) {
+        int keyCode = e.getKeyCode();
+        if(keyCode == KeyEvent.VK_LEFT){
+            getGameboard().movePlayerLeft();
+        }
     }
 
-    public void addMoveRightBtnListener(ActionListener action) {
-        moveRight.addActionListener(action);
+    public void addMoveRightBtnListener(KeyEvent e) {
+        int keyCode = e.getKeyCode();
+        if(keyCode == KeyEvent.VK_LEFT){
+            getGameboard().movePlayerRight();
+        }
+        
     }
 
-    public void addMoveUpBtnListener(ActionListener action) {
-        moveUp.addActionListener(action);
+    public void addMoveUpBtnListener (KeyEvent e) {
+        int keyCode = e.getKeyCode();
+        if(keyCode == KeyEvent.VK_LEFT){
+            getGameboard().movePlayerUp();
+        }
     }
 
-    public void addMoveDownBtnListener(ActionListener action) {
-        moveDown.addActionListener(action);
+    public void addMoveDownBtnListener(KeyEvent e) {
+        int keyCode = e.getKeyCode();
+        if(keyCode == KeyEvent.VK_LEFT){
+            getGameboard().movePlayerDown();
+        }
     }
 
 }

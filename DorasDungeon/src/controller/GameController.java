@@ -17,11 +17,12 @@ public class GameController {
         this.gameOptionView = gameboard;
         this.parentPanel = parentPanel;
         gameOptionView.addReturnToMainMenuBtnListener(new ReturnToMainMenuListener());
+        /*
         gameOptionView.addMoveLeftBtnListener(new MoveLeftListener());
         gameOptionView.addMoveRightBtnListener(new MoveRightListener());
         gameOptionView.addMoveUpBtnListener(new MoveUpListener());
         gameOptionView.addMoveDownBtnListener(new MoveDownListener());
-
+        */
     }
 
     private class ReturnToMainMenuListener implements ActionListener {
