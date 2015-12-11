@@ -3,83 +3,232 @@ package view;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.List;
+import java.util.Random;
+import java.lang.Math;
 
 /**
- * Created by Katie on 11/16/2015.
+ * Work on generating random endpoint
  */
-public class Gameboard extends JPanel implements KeyListener {
+public class Gameboard extends JPanel{
 
-    private boolean[][] gamePoints = new boolean[][]{
-        {true,  true,   true,    true,    true,    true,    true,    true,    true,    true },
-        {true,  true,   true,    true,    true,    true,    true,    true,    true,    true},
-        {false, false,  false,   true,    true,    true,    false,   false,   false,   true},
-        {true,  true,   false,   true,    true,    true,    false,   true,    false,   true},
-        {true,  true,   false,   false,   false,   true,    false,   true,    false,   false},
-        {true,  true,   true,    true,    false,   true,    false,   true,    true,    true},
-        {true,  true,   true,    true,    false,   false,   false,   true,    true,    true},
-        {true,  true,   true,    true,    true,    true,    true,    true,    true,    true},
-        {true,  true,   true,    true,    true,    true,    true,    true,    true,    true},
-        {true,  true,   true,    true,    true,    true,    true,    true,    true,    true}
-    };
+    
 
     private JLabel[][] gameLabels;
 
     private int playerPositionX;
     private int playerPositionY;
 
-    final int rows = 10;
-    final int cols = 10;
-
-    private final int startCoordinateX = 0;
-    private final int startCoordinateY = 2;
-
-    private final int endCoordinateX = 9;
-    private final int endCoordinateY = 4;
+    int N = 20;
+    
+    Random rand = new Random();
+    
+    private int startCoordinateX = rand.nextInt(((N-1) - 1) + 1);
+    private int startCoordinateY = rand.nextInt(((N-1) - 1) + 1);
+    
+    private  int endCoordinateX;
+    private  int endCoordinateY;
+    
+    private boolean[][] visited;
+    private boolean[][] maze;
 
     public Gameboard() {
-        
         setFocusable(true);
         requestFocusInWindow();
-        this.gameLabels = new JLabel[rows][cols];
+        
+        createGameBoard();
+           
+        init();
+        
+        generate(startCoordinateX,startCoordinateY);
+        
+        generateLables();
 
-//        TODO: change size
-        GridLayout gameGrid = new GridLayout(rows, cols, -1, -1);
-        this.setLayout(gameGrid);
-        this.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
-        for (int y = 0; y < rows; ++y) {
-            for (int x = 0; x < cols; ++x) {
+        
+        
+    }
+    
+    private void generateLables(){
+        for (int y = 0; y < N; ++y) {
+            for (int x = 0; x < N; ++x) {
+                
                 JLabel n = new JLabel();
                 n.setOpaque(true);
-                if (y == 2 && x == 0) {
+                if (y == startCoordinateY && x == startCoordinateX) {
                     n.setBackground(Color.PINK);
                     playerPositionX = x;
                     playerPositionY = y;
-                } else if (gamePoints[y][x]) {
+                } else if (maze[y][x]) {
                     n.setBackground(Color.DARK_GRAY);
-                } else {
+                    
+                } else if(x == endCoordinateY && y == endCoordinateX){
+                    n.setBackground(Color.yellow);
+                }else{
                     n.setBackground(Color.CYAN);
                 }
 
-                n.setBorder(BorderFactory.createLineBorder(Color.CYAN));
+                
                 gameLabels[y][x] = n;
                 this.add(n);
 
             }
         }
-
-
-        this.addKeyListener(this);
-        this.setFocusable(true);
-//        this.requestFocusInWindow();
     }
+    
+    private void createGameBoard(){
+        
+        this.gameLabels = new JLabel[N][N];
 
+//        TODO: change size
+        GridLayout gameGrid = new GridLayout(N, N, -1, -1);
+        this.setLayout(gameGrid);
+        this.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+    }
+    
+    private void init() {
+        this.maze = new boolean[N][N];
+        this.visited = new boolean[N][N];
+        
+        playerPositionX = startCoordinateX;
+        playerPositionY = startCoordinateY;
+        
+        for (int x = 0; x < N; x++) {
+            for (int y = 0; y < N; y++) {
+            maze[x][y] = true;
+            }    
+        }
+        for (int x = 0; x < N; x++) {
+            for (int y = 0; y < N; y++) {
+            visited[x][y] = false;
+            }    
+        }
+        
+        // initialize border cells as already visited, prevents generator from working with the edges
+        
+        for (int x = 0; x < N; x++) {
+            visited[x][0] = true;
+            visited[x][N-1] = true;
+        }
+        for (int y = 0; y < N; y++) {
+            visited[0][y] = true;
+            visited[N-1][y] = true;
+        }
+        //Sets all cells to true 
+        
+        for (int x = 0; x < N; x++) {
+            for (int y = 0; y < N; y++) {
+            maze[x][y] = true;
+            }    
+        }
+        
+
+           
+        
+    }
+    //Logic for generating the random maze
+    private void generate(int x, int y){
+        visited[x][y] = true;
+        maze[x][y] = false;
+        
+        
+        
+        while (!visited[x][y+1] || !visited[x+1][y] || !visited[x][y-1] || !visited[x-1][y]){
+            
+            
+            while(true){
+                int r = rand.nextInt((3 - 0) + 1);
+                
+                //move down
+                if(r == 0 && (!visited[x+1][y] ) && x+1 < N){
+                    visited[x][y+1] = true;
+                    visited[x][y-1] = true;
+                    //visited[x][y] = true;
+                    
+                    if(visited[x+2][y] == true){
+                        visited[x+1][y] = true;
+                    }
+                    
+                   // maze[x][y] = false;
+                    
+                    generate(x + 1, y);
+                    
+                    break;
+                }
+                //move right
+                else if (r == 1 && (!visited[x][y+1] ) && y+1 < N) {
+                    visited[x+1][y] = true;
+                    visited[x-1][y] = true;
+                    //visited[x][y] = true;
+                    
+                    if(visited[x][y+2] == true){
+                        visited[x][y+1] = true;
+                    }
+                    
+                    //maze[x][y] = false;
+                    
+                    generate(x, y+1);
+                    
+                    break;
+                }
+                //move up
+                else if (r == 2 && (!visited[x-1][y] ) && x-2 > -1) {
+                    visited[x][y+1] = true;
+                    visited[x][y-1] = true;
+                    //visited[x][y] = true;
+                    
+                    if(visited[x-2][y] == true){
+                        visited[x-1][y] = true;
+                    }
+                    
+                    //maze[x][y] = false;
+                    
+                    generate(x-1, y);
+                    
+                    break;
+                }
+                //move left
+                else if (r == 3 && (!visited[x][y-1] ) && y-2 > -1) {
+                    visited[x+1][y] = true;
+                    visited[x-1][y] = true;
+                    //visited[x][y] = true;
+                    
+                    if(visited[x][y-2] == true){
+                        visited[x][y-1] = true;
+                    }
+                         
+                    //maze[x][y] = false;
+                    
+                    generate(x, y-1);
+                    
+                    break;
+                }else{
+                    break;
+                }
+                
+            }
+            
+            setEndPoint(maze);
+        }
+        
+        
+        
+    }
+    
+    private void setEndPoint(boolean[][] maze){
+        for(int i = N-1; i > 0; i--){
+            for(int j = N-1; j > 0; j--){
+                if (!maze[i][j] &&((/*down, right, up*/maze[i + 1][j ] && maze[i][j + 1] && maze[i - 1][j]) || (/*right, up, left*/maze[i][j + 1] && maze[i - 1][j] && maze[i][j - 1]) || (/*up, left, down*/maze[i - 1][j] && maze[i][j - 1] && maze[i + 1][j]) || (/*left, down, right*/maze[i][j - 1] && maze[i + 1][j] && maze[i][j + 1]))){
+                    endCoordinateX = i;
+                    endCoordinateY = j;
+                }
+            }
+        }
+    }
+    
     private void atEnd() {
 
-        if (playerPositionX == endCoordinateX && playerPositionY == endCoordinateY) {
+        if (playerPositionX == endCoordinateY && playerPositionY == endCoordinateX) {
             showGameOverMessage();
             restartGame();
         }
@@ -92,13 +241,32 @@ public class Gameboard extends JPanel implements KeyListener {
     }
 
     private void restartGame() {
+           
+        init();
+        
+        generate(startCoordinateX,startCoordinateY);
+        
+        generateLables();
 
+        /*
+        startCoordinateX = rand.nextInt(((N-1) - 1) + 1);
+        startCoordinateY = rand.nextInt(((N-1) - 1) + 1);
+        N = N + 10;
+        
+        createGameBoard();
+        init();
+        
+        generate(startCoordinateX,startCoordinateY);
+        
+        generateLables();
+        
+        /*
         gameLabels[playerPositionY][playerPositionX].setBackground(Color.CYAN);
         gameLabels[startCoordinateY][startCoordinateX].setBackground(Color.PINK);
-
+        
         playerPositionY = startCoordinateY;
         playerPositionX = startCoordinateX;
-
+*/
     }
 
     private void showGameOverMessage() {
@@ -126,7 +294,7 @@ public class Gameboard extends JPanel implements KeyListener {
     public void movePlayerRight() {
 
         // if the point to the right is not filled
-        if (playerPositionX + 1 > 0 && playerPositionX + 1 < rows && !gamePoints[playerPositionY][playerPositionX + 1]) {
+        if (playerPositionX + 1 > 0 && playerPositionX + 1 < N && !maze[playerPositionY][playerPositionX + 1]) {
             // moves player one point to the right
             gameLabels[playerPositionY][playerPositionX + 1].setBackground(Color.PINK);
 
@@ -145,7 +313,7 @@ public class Gameboard extends JPanel implements KeyListener {
     public void movePlayerLeft() {
 
         // if the point to the left is not filled
-        if (playerPositionX - 1 >= 0 && playerPositionX - 1 < rows && !gamePoints[playerPositionY][playerPositionX - 1]) {
+        if (/*playerPositionX - 1 >= 0 && playerPositionX - 1 < N && */!maze[playerPositionY][playerPositionX - 1]) {
             // move player one point to the left
             gameLabels[playerPositionY][playerPositionX - 1].setBackground(Color.PINK);
 
@@ -164,7 +332,7 @@ public class Gameboard extends JPanel implements KeyListener {
     public void movePlayerUp() {
 
         // if the point is not filled
-        if (!gamePoints[playerPositionY - 1][playerPositionX]) {
+        if (!maze[playerPositionY - 1][playerPositionX]) {
 
             // move player one point up
             gameLabels[playerPositionY - 1][playerPositionX].setBackground(Color.PINK);
@@ -184,7 +352,7 @@ public class Gameboard extends JPanel implements KeyListener {
     public void movePlayerDown() {
 
         // if the point is not filled
-        if (!gamePoints[playerPositionY + 1][playerPositionX]) {
+        if (!maze[playerPositionY + 1][playerPositionX]) {
 
             // move player one point up
             gameLabels[playerPositionY + 1][playerPositionX].setBackground(Color.PINK);
@@ -209,18 +377,4 @@ public class Gameboard extends JPanel implements KeyListener {
         return playerPositionY;
     }
 
-    @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        System.out.println("key pressed");
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-
-    }
 }
