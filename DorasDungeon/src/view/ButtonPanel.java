@@ -36,6 +36,8 @@ public class ButtonPanel extends JPanel{
         
         setBackground(Color.DARK_GRAY);
         setForeground(Color.CYAN);
+        
+        setFocusable(false);
             
     }
 }

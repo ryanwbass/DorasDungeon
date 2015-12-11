@@ -21,6 +21,8 @@ public class OptionButton extends JButton {
         setMargin(new Insets(20, 20, 20, 20));
         setAlignmentX(Component.CENTER_ALIGNMENT);
         setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        
+        setFocusable(false);
     }
 
 }

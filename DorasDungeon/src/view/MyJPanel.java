@@ -58,7 +58,10 @@ public class MyJPanel extends JPanel implements ActionListener {
             instructionsView.returnButton.addActionListener(this);
             buttonsPane.credits.addActionListener(this);
             creditsView.back.addActionListener(this);
-                                   
+            
+            setFocusable(false);
+            requestFocusInWindow();
+                                  
         }
         
         public void clearTopPanel()

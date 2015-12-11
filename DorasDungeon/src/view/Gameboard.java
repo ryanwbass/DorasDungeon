@@ -23,8 +23,8 @@ public class Gameboard extends JPanel{
     
     Random rand = new Random();
     
-    private int startCoordinateX = rand.nextInt(((N-1) - 1) + 1);
-    private int startCoordinateY = rand.nextInt(((N-1) - 1) + 1);
+    private int startCoordinateX;
+    private int startCoordinateY;
     
     private  int endCoordinateX;
     private  int endCoordinateY;
@@ -50,6 +50,10 @@ public class Gameboard extends JPanel{
     }
     
     private void generateLables(){
+        
+        ImageIcon dirt = new ImageIcon("src/images/dirt.jpg");
+        ImageIcon stone = new ImageIcon("src/images/stone.jpg");
+        
         for (int y = 0; y < N; ++y) {
             for (int x = 0; x < N; ++x) {
                 
@@ -60,12 +64,14 @@ public class Gameboard extends JPanel{
                     playerPositionX = x;
                     playerPositionY = y;
                 } else if (maze[y][x]) {
-                    n.setBackground(Color.DARK_GRAY);
+                    //n.setBackground(Color.DARK_GRAY);
+                    
+                    n.setIcon(dirt);
                     
                 } else if(x == endCoordinateY && y == endCoordinateX){
                     n.setBackground(Color.yellow);
                 }else{
-                    n.setBackground(Color.CYAN);
+                    n.setIcon(stone);
                 }
 
                 
@@ -89,6 +95,9 @@ public class Gameboard extends JPanel{
     private void init() {
         this.maze = new boolean[N][N];
         this.visited = new boolean[N][N];
+        
+        startCoordinateX  = rand.nextInt(((N-1) - 1) + 1);
+        startCoordinateY = rand.nextInt(((N-1) - 1) + 1);
         
         playerPositionX = startCoordinateX;
         playerPositionY = startCoordinateY;
@@ -241,13 +250,16 @@ public class Gameboard extends JPanel{
     }
 
     private void restartGame() {
-           
+        this.removeAll();
+        //N = N + 10;
         init();
         
         generate(startCoordinateX,startCoordinateY);
         
         generateLables();
-
+        
+        repaint();
+        revalidate();
         /*
         startCoordinateX = rand.nextInt(((N-1) - 1) + 1);
         startCoordinateY = rand.nextInt(((N-1) - 1) + 1);
