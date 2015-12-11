@@ -244,11 +244,6 @@ public class Gameboard extends JPanel{
 
     }
 
-    @Override
-    public boolean isFocusTraversable() {
-        return true;
-    }
-
     private void restartGame() {
         this.removeAll();
         //N = N + 10;

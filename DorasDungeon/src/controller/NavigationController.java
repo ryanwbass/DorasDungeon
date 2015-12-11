@@ -13,7 +13,7 @@ import model.UserList;
 /**
  * Created by Katie on 10/30/2015.
  */
-public class OptionsController {
+public class NavigationController {
 // etucd
     private OptionsView view;
     private OptionsModel model;
@@ -24,7 +24,7 @@ public class OptionsController {
     
     private MyJPanel parentPanel;
 
-    public OptionsController(OptionsView view, OptionsModel model, MyJPanel parentPanel) {
+    public NavigationController(OptionsView view, OptionsModel model, MyJPanel parentPanel) {
         this.view = view;
         this.model = model;
 
