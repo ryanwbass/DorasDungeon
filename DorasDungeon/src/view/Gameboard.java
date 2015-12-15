@@ -1,11 +1,8 @@
 package view;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
-import java.util.List;
 import java.util.Random;
-import java.lang.Math;
 
 /**
  * Work on generating random endpoint
@@ -32,6 +29,10 @@ public class Gameboard extends JPanel{
     private boolean[][] visited;
     private boolean[][] maze;
 
+    private ImageIcon dirt = new ImageIcon("src/images/dirt.jpg");
+    private ImageIcon stone = new ImageIcon("src/images/stone.jpg");
+    private ImageIcon player = new ImageIcon("src/images/player.png");
+
     public Gameboard() {
         setFocusable(true);
         requestFocusInWindow();
@@ -42,33 +43,27 @@ public class Gameboard extends JPanel{
         
         generate(startCoordinateX,startCoordinateY);
         
-        generateLables();
+        generateLabels();
 
 
         
         
     }
     
-    private void generateLables(){
-        
-        ImageIcon dirt = new ImageIcon("src/images/dirt.jpg");
-        ImageIcon stone = new ImageIcon("src/images/stone.jpg");
-        
+    private void generateLabels(){
+
         for (int y = 0; y < N; ++y) {
             for (int x = 0; x < N; ++x) {
                 
                 JLabel n = new JLabel();
                 n.setOpaque(true);
                 if (y == startCoordinateY && x == startCoordinateX) {
-                    n.setBackground(Color.PINK);
+                    n.setIcon(player);
                     playerPositionX = x;
                     playerPositionY = y;
                 } else if (maze[y][x]) {
-                    //n.setBackground(Color.DARK_GRAY);
-                    
                     n.setIcon(dirt);
-                    
-                } else if(x == endCoordinateY && y == endCoordinateX){
+                } else if(x == endCoordinateX && y == endCoordinateY){
                     n.setBackground(Color.yellow);
                 }else{
                     n.setIcon(stone);
@@ -96,23 +91,25 @@ public class Gameboard extends JPanel{
         this.maze = new boolean[N][N];
         this.visited = new boolean[N][N];
         
-        startCoordinateX  = rand.nextInt(((N-1) - 1) + 1);
-        startCoordinateY = rand.nextInt(((N-1) - 1) + 1);
+        startCoordinateX  = rand.nextInt((N - 2) - 1 + 1) + 1;
+        startCoordinateY = rand.nextInt((N - 2) - 1 + 1) + 1;
         
         playerPositionX = startCoordinateX;
         playerPositionY = startCoordinateY;
         
         for (int x = 0; x < N; x++) {
             for (int y = 0; y < N; y++) {
-            maze[x][y] = true;
+                if (x == startCoordinateX && y == startCoordinateY) {
+                    maze[x][y] = false;
+                    visited[x][y] = true;
+                } else {
+                    maze[x][y] = true;
+                    visited[x][y] = false;
+                }
             }    
         }
-        for (int x = 0; x < N; x++) {
-            for (int y = 0; y < N; y++) {
-            visited[x][y] = false;
-            }    
-        }
-        
+
+
         // initialize border cells as already visited, prevents generator from working with the edges
         
         for (int x = 0; x < N; x++) {
@@ -123,16 +120,6 @@ public class Gameboard extends JPanel{
             visited[0][y] = true;
             visited[N-1][y] = true;
         }
-        //Sets all cells to true 
-        
-        for (int x = 0; x < N; x++) {
-            for (int y = 0; y < N; y++) {
-            maze[x][y] = true;
-            }    
-        }
-        
-
-           
         
     }
     //Logic for generating the random maze
@@ -146,67 +133,55 @@ public class Gameboard extends JPanel{
             
             
             while(true){
-                int r = rand.nextInt((3 - 0) + 1);
+                int r = rand.nextInt((3) + 1);
                 
                 //move down
-                if(r == 0 && (!visited[x+1][y] ) && x+1 < N){
+                if(r == 0 && ( x + 1 < N && x + 2 < N && !visited[x+1][y] )){
                     visited[x][y+1] = true;
                     visited[x][y-1] = true;
-                    //visited[x][y] = true;
-                    
-                    if(visited[x+2][y] == true){
+
+                    if(visited[x+2][y]){
                         visited[x+1][y] = true;
                     }
-                    
-                   // maze[x][y] = false;
-                    
+
                     generate(x + 1, y);
                     
                     break;
                 }
                 //move right
-                else if (r == 1 && (!visited[x][y+1] ) && y+1 < N) {
+                else if (r == 1 && ( y + 1 < N && y + 2 < N && !visited[x][y+1] ) && y+1 < N) {
                     visited[x+1][y] = true;
                     visited[x-1][y] = true;
-                    //visited[x][y] = true;
-                    
-                    if(visited[x][y+2] == true){
+
+                    if(visited[x][y+2]){
                         visited[x][y+1] = true;
                     }
-                    
-                    //maze[x][y] = false;
-                    
+
                     generate(x, y+1);
                     
                     break;
                 }
                 //move up
-                else if (r == 2 && (!visited[x-1][y] ) && x-2 > -1) {
+                else if (r == 2 && ( x - 1 > -1 && x - 2 > -1 && !visited[x-1][y])) {
                     visited[x][y+1] = true;
                     visited[x][y-1] = true;
-                    //visited[x][y] = true;
-                    
-                    if(visited[x-2][y] == true){
+
+                    if(visited[x-2][y]){
                         visited[x-1][y] = true;
                     }
-                    
-                    //maze[x][y] = false;
-                    
+
                     generate(x-1, y);
                     
                     break;
                 }
                 //move left
-                else if (r == 3 && (!visited[x][y-1] ) && y-2 > -1) {
+                else if (r == 3 && (y - 1 > -1 && y - 2 > - 1 && !visited[x][y-1] )) {
                     visited[x+1][y] = true;
                     visited[x-1][y] = true;
-                    //visited[x][y] = true;
-                    
-                    if(visited[x][y-2] == true){
+
+                    if(visited[x][y-2]){
                         visited[x][y-1] = true;
                     }
-                         
-                    //maze[x][y] = false;
                     
                     generate(x, y-1);
                     
@@ -227,9 +202,13 @@ public class Gameboard extends JPanel{
     private void setEndPoint(boolean[][] maze){
         for(int i = N-1; i > 0; i--){
             for(int j = N-1; j > 0; j--){
-                if (!maze[i][j] &&((/*down, right, up*/maze[i + 1][j ] && maze[i][j + 1] && maze[i - 1][j]) || (/*right, up, left*/maze[i][j + 1] && maze[i - 1][j] && maze[i][j - 1]) || (/*up, left, down*/maze[i - 1][j] && maze[i][j - 1] && maze[i + 1][j]) || (/*left, down, right*/maze[i][j - 1] && maze[i + 1][j] && maze[i][j + 1]))){
-                    endCoordinateX = i;
-                    endCoordinateY = j;
+                if (!maze[i][j] &&( (/*down, right, up*/    maze[i + 1][j] && maze[i][j + 1] && maze[i - 1][j] )
+                                 || (/*right, up, left*/    maze[i][j + 1] && maze[i - 1][j] && maze[i][j - 1] )
+                                 || (/*up, left, down*/     maze[i - 1][j] && maze[i][j - 1] && maze[i + 1][j] )
+                                 || (/*left, down, right*/  maze[i][j - 1] && maze[i + 1][j] && maze[i][j + 1] ) ))
+                {
+                    endCoordinateY = i;
+                    endCoordinateX = j;
                 }
             }
         }
@@ -237,7 +216,7 @@ public class Gameboard extends JPanel{
     
     private void atEnd() {
 
-        if (playerPositionX == endCoordinateY && playerPositionY == endCoordinateX) {
+        if (playerPositionX == endCoordinateX && playerPositionY == endCoordinateY) {
             showGameOverMessage();
             restartGame();
         }
@@ -249,31 +228,13 @@ public class Gameboard extends JPanel{
         //N = N + 10;
         init();
         
-        generate(startCoordinateX,startCoordinateY);
+        generate(startCoordinateX, startCoordinateY);
         
-        generateLables();
+        generateLabels();
         
         repaint();
         revalidate();
-        /*
-        startCoordinateX = rand.nextInt(((N-1) - 1) + 1);
-        startCoordinateY = rand.nextInt(((N-1) - 1) + 1);
-        N = N + 10;
-        
-        createGameBoard();
-        init();
-        
-        generate(startCoordinateX,startCoordinateY);
-        
-        generateLables();
-        
-        /*
-        gameLabels[playerPositionY][playerPositionX].setBackground(Color.CYAN);
-        gameLabels[startCoordinateY][startCoordinateX].setBackground(Color.PINK);
-        
-        playerPositionY = startCoordinateY;
-        playerPositionX = startCoordinateX;
-*/
+
     }
 
     private void showGameOverMessage() {
@@ -299,14 +260,14 @@ public class Gameboard extends JPanel{
     }
 
     public void movePlayerRight() {
-
+        System.out.println("Moving right");
         // if the point to the right is not filled
         if (playerPositionX + 1 > 0 && playerPositionX + 1 < N && !maze[playerPositionY][playerPositionX + 1]) {
             // moves player one point to the right
-            gameLabels[playerPositionY][playerPositionX + 1].setBackground(Color.PINK);
+            gameLabels[playerPositionY][playerPositionX + 1].setIcon(player);
 
             // set old position color back
-            gameLabels[playerPositionY][playerPositionX].setBackground(Color.CYAN);
+            gameLabels[playerPositionY][playerPositionX].setIcon(stone);
 
             // update player position
             playerPositionX = playerPositionX + 1;  // only x coor changes
@@ -318,14 +279,14 @@ public class Gameboard extends JPanel{
     }
 
     public void movePlayerLeft() {
-
+        System.out.println("Moving left");
         // if the point to the left is not filled
         if (/*playerPositionX - 1 >= 0 && playerPositionX - 1 < N && */!maze[playerPositionY][playerPositionX - 1]) {
             // move player one point to the left
-            gameLabels[playerPositionY][playerPositionX - 1].setBackground(Color.PINK);
+            gameLabels[playerPositionY][playerPositionX - 1].setIcon(player);
 
             // set old position color back
-            gameLabels[playerPositionY][playerPositionX].setBackground(Color.CYAN);
+            gameLabels[playerPositionY][playerPositionX].setIcon(stone);
 
             // update player position
             playerPositionX = playerPositionX - 1;  // only x coor changes
@@ -337,15 +298,15 @@ public class Gameboard extends JPanel{
     }
 
     public void movePlayerUp() {
-
+        System.out.println("Moving up");
         // if the point is not filled
         if (!maze[playerPositionY - 1][playerPositionX]) {
 
             // move player one point up
-            gameLabels[playerPositionY - 1][playerPositionX].setBackground(Color.PINK);
+            gameLabels[playerPositionY - 1][playerPositionX].setIcon(player);
 
             // set old position color back
-            gameLabels[playerPositionY][playerPositionX].setBackground(Color.CYAN);
+            gameLabels[playerPositionY][playerPositionX].setIcon(stone);
 
             // update player position
             playerPositionY = playerPositionY - 1;  // only y coor changes
@@ -357,15 +318,15 @@ public class Gameboard extends JPanel{
     }
 
     public void movePlayerDown() {
-
+        System.out.println("Moving down");
         // if the point is not filled
         if (!maze[playerPositionY + 1][playerPositionX]) {
 
             // move player one point up
-            gameLabels[playerPositionY + 1][playerPositionX].setBackground(Color.PINK);
+            gameLabels[playerPositionY + 1][playerPositionX].setIcon(player);
 
             // set old position color back
-            gameLabels[playerPositionY][playerPositionX].setBackground(Color.CYAN);
+            gameLabels[playerPositionY][playerPositionX].setIcon(stone);
 
             // update player position
             playerPositionY = playerPositionY + 1;  // only y coor changes
