@@ -7,10 +7,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.Font;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 /**
  *
@@ -22,13 +19,18 @@ public class MainPanel extends JPanel{
     public MainPanel()
     {
         setBackground(Color.DARK_GRAY);
-        
-        splashButton = new JButton(new ImageIcon("src/images/doras_dungeon.jpg"));            
+        setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+
+        add(Box.createVerticalStrut(50));
+        splashButton = new JButton(new ImageIcon("src/images/doras_dungeon.jpg"));
+        splashButton.setAlignmentX(CENTER_ALIGNMENT);
         add(splashButton);
+        add(Box.createVerticalStrut(30));
 
         optionsLabel = new JLabel("No options selected yet.");
         optionsLabel.setForeground(Color.CYAN);
         optionsLabel.setFont(new Font("Ariel", Font.PLAIN, 20));
+        optionsLabel.setAlignmentX(CENTER_ALIGNMENT);
         add(optionsLabel);
 
     }

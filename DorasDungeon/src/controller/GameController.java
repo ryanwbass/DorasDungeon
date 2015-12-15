@@ -17,10 +17,6 @@ public class GameController {
         this.gameOptionView = gameboard;
         this.parentPanel = parentPanel;
         gameOptionView.addReturnToMainMenuBtnListener(new ReturnToMainMenuListener());
-//        gameOptionView.addMoveLeftBtnListener(new MoveLeftListener());
-//        gameOptionView.addMoveRightBtnListener(new MoveRightListener());
-//        gameOptionView.addMoveUpBtnListener(new MoveUpListener());
-//        gameOptionView.addMoveDownBtnListener(new MoveDownListener());
 
     }
 
@@ -33,33 +29,4 @@ public class GameController {
         }
     }
 
-
-//    private class MoveLeftListener implements ActionListener {
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            gameOptionView.getGameboard().movePlayerLeft();
-//        }
-//    }
-//
-//    private class MoveRightListener implements ActionListener {
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            gameOptionView.getGameboard().movePlayerRight();
-//        }
-//    }
-//
-//    private class MoveUpListener implements ActionListener {
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            gameOptionView.getGameboard().movePlayerUp();
-//        }
-//    }
-//
-//
-//    private class MoveDownListener implements ActionListener {
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            gameOptionView.getGameboard().movePlayerDown();
-//        }
-//    }
 }

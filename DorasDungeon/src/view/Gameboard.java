@@ -31,7 +31,8 @@ public class Gameboard extends JPanel{
 
     private ImageIcon dirt = new ImageIcon("src/images/dirt.jpg");
     private ImageIcon stone = new ImageIcon("src/images/stone.jpg");
-    private ImageIcon player = new ImageIcon("src/images/player.png");
+    private ImageIcon player = new ImageIcon("src/images/player.jpg");
+    private ImageIcon finishLine = new ImageIcon("src/images/finishFlag.png");
 
     public Gameboard() {
         setFocusable(true);
@@ -64,7 +65,7 @@ public class Gameboard extends JPanel{
                 } else if (maze[y][x]) {
                     n.setIcon(dirt);
                 } else if(x == endCoordinateX && y == endCoordinateY){
-                    n.setBackground(Color.yellow);
+                    n.setIcon(finishLine);
                 }else{
                     n.setIcon(stone);
                 }
@@ -182,7 +183,7 @@ public class Gameboard extends JPanel{
                     if(visited[x][y-2]){
                         visited[x][y-1] = true;
                     }
-                    
+
                     generate(x, y-1);
                     
                     break;
@@ -260,7 +261,6 @@ public class Gameboard extends JPanel{
     }
 
     public void movePlayerRight() {
-        System.out.println("Moving right");
         // if the point to the right is not filled
         if (playerPositionX + 1 > 0 && playerPositionX + 1 < N && !maze[playerPositionY][playerPositionX + 1]) {
             // moves player one point to the right
@@ -279,7 +279,6 @@ public class Gameboard extends JPanel{
     }
 
     public void movePlayerLeft() {
-        System.out.println("Moving left");
         // if the point to the left is not filled
         if (/*playerPositionX - 1 >= 0 && playerPositionX - 1 < N && */!maze[playerPositionY][playerPositionX - 1]) {
             // move player one point to the left
@@ -298,7 +297,6 @@ public class Gameboard extends JPanel{
     }
 
     public void movePlayerUp() {
-        System.out.println("Moving up");
         // if the point is not filled
         if (!maze[playerPositionY - 1][playerPositionX]) {
 
@@ -318,7 +316,6 @@ public class Gameboard extends JPanel{
     }
 
     public void movePlayerDown() {
-        System.out.println("Moving down");
         // if the point is not filled
         if (!maze[playerPositionY + 1][playerPositionX]) {
 

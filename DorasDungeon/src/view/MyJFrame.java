@@ -20,7 +20,7 @@ public class MyJFrame extends JFrame {
         getContentPane().add(mjp,"Center");        
        
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize (700, 600);
+        setSize (1500, 1200);
         setVisible(true);         
     }
    
