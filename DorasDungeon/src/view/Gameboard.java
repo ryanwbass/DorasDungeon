@@ -9,7 +9,7 @@ import java.util.Random;
  */
 public class Gameboard extends JPanel{
 
-    
+    private GameOptionView view;
 
     private JLabel[][] gameLabels;
 
@@ -33,8 +33,12 @@ public class Gameboard extends JPanel{
     private ImageIcon stone = new ImageIcon("src/images/stone.jpg");
     private ImageIcon player = new ImageIcon("src/images/player.jpg");
     private ImageIcon finishLine = new ImageIcon("src/images/finishFlag.png");
+    private ImageIcon pathWithToken = new ImageIcon("src/images/stoneWithToken.jpg");
 
-    public Gameboard() {
+    public Gameboard(GameOptionView view) {
+
+        this.view = view;
+
         setFocusable(true);
         requestFocusInWindow();
         
@@ -67,7 +71,7 @@ public class Gameboard extends JPanel{
                 } else if(x == endCoordinateX && y == endCoordinateY){
                     n.setIcon(finishLine);
                 }else{
-                    n.setIcon(stone);
+                    n.setIcon(pathWithToken);
                 }
 
                 
@@ -225,6 +229,8 @@ public class Gameboard extends JPanel{
     }
 
     private void restartGame() {
+        view.resetPlayerScore();
+
         this.removeAll();
         //N = N + 10;
         init();
@@ -263,6 +269,13 @@ public class Gameboard extends JPanel{
     public void movePlayerRight() {
         // if the point to the right is not filled
         if (playerPositionX + 1 > 0 && playerPositionX + 1 < N && !maze[playerPositionY][playerPositionX + 1]) {
+
+            // check if spot moved into has a token
+            if (gameLabels[playerPositionY][playerPositionX + 1].getIcon() == pathWithToken) {
+                //  increment player score
+                view.incrementPlayerScore();
+            }
+
             // moves player one point to the right
             gameLabels[playerPositionY][playerPositionX + 1].setIcon(player);
 
@@ -280,7 +293,14 @@ public class Gameboard extends JPanel{
 
     public void movePlayerLeft() {
         // if the point to the left is not filled
-        if (/*playerPositionX - 1 >= 0 && playerPositionX - 1 < N && */!maze[playerPositionY][playerPositionX - 1]) {
+        if (!maze[playerPositionY][playerPositionX - 1]) {
+
+            // check if spot moved into has a token
+            if (gameLabels[playerPositionY][playerPositionX - 1].getIcon() == pathWithToken) {
+                //  increment player score
+                view.incrementPlayerScore();
+            }
+
             // move player one point to the left
             gameLabels[playerPositionY][playerPositionX - 1].setIcon(player);
 
@@ -300,6 +320,12 @@ public class Gameboard extends JPanel{
         // if the point is not filled
         if (!maze[playerPositionY - 1][playerPositionX]) {
 
+            // check if spot moved into has a token
+            if (gameLabels[playerPositionY - 1][playerPositionX].getIcon() == pathWithToken) {
+                //  increment player score
+                view.incrementPlayerScore();
+            }
+
             // move player one point up
             gameLabels[playerPositionY - 1][playerPositionX].setIcon(player);
 
@@ -318,6 +344,12 @@ public class Gameboard extends JPanel{
     public void movePlayerDown() {
         // if the point is not filled
         if (!maze[playerPositionY + 1][playerPositionX]) {
+
+            // check if spot moved into has a token
+            if (gameLabels[playerPositionY + 1][playerPositionX].getIcon() == pathWithToken) {
+                //  increment player score
+                view.incrementPlayerScore();
+            }
 
             // move player one point up
             gameLabels[playerPositionY + 1][playerPositionX].setIcon(player);

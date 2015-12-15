@@ -17,15 +17,21 @@ public class GameOptionView extends JPanel {
     private final MyJPanel parentPanel;
     private Gameboard gameboard;
     public OptionButton returnToMain;
-//, moveLeft, moveRight, moveDown, moveUp
+
+    private JLabel playerScoreLabel;
+    private int playerScore;
+
+    //, moveLeft, moveRight, moveDown, moveUp
     public GameOptionView(MyJPanel parentPanel) {
+
+        playerScore = 0;
 
         this.setLayout(new BorderLayout());
         this.setBackground(Color.DARK_GRAY);
 
         this.parentPanel = parentPanel;
 
-        gameboard = new Gameboard();
+        gameboard = new Gameboard(this);
         this.add(gameboard, BorderLayout.CENTER);
 
         Box box = Box.createHorizontalBox();
@@ -34,21 +40,12 @@ public class GameOptionView extends JPanel {
         returnToMain.setText("Return to Options");
         box.add(returnToMain);
 
-//        moveLeft = new OptionButton();
-//        moveLeft.setText("<");
-//        box.add(moveLeft);
-//
-//        moveRight = new OptionButton();
-//        moveRight.setText(">");
-//        box.add(moveRight);
-//
-//        moveDown = new OptionButton();
-//        moveDown.setText("v");
-//        box.add(moveDown);
-//
-//        moveUp = new OptionButton();
-//        moveUp.setText("^");
-//        box.add(moveUp);
+        box.add(Box.createHorizontalStrut(850));
+
+        playerScoreLabel = new JLabel("Player Score:  00");
+        playerScoreLabel.setFont(new Font("Ariel", Font.PLAIN, 30));
+        playerScoreLabel.setForeground(Color.CYAN);
+        box.add(playerScoreLabel);
 
         this.add(box, BorderLayout.SOUTH);
 
@@ -95,20 +92,25 @@ public class GameOptionView extends JPanel {
         returnToMain.addActionListener(action);
     }
 
-//    public void addMoveLeftBtnListener(ActionListener action) {
-//        moveLeft.addActionListener(action);
-//    }
-//
-//    public void addMoveRightBtnListener(ActionListener action) {
-//        moveRight.addActionListener(action);
-//    }
-//
-//    public void addMoveUpBtnListener(ActionListener action) {
-//        moveUp.addActionListener(action);
-//    }
-//
-//    public void addMoveDownBtnListener(ActionListener action) {
-//        moveDown.addActionListener(action);
-//    }
+    public void incrementPlayerScore() {
+
+        playerScore ++;
+
+        playerScoreLabel.setText(String.format(
+                "Player Score: %d",
+                playerScore
+        ));
+
+    }
+
+    public void resetPlayerScore() {
+        playerScore = 0;
+
+        playerScoreLabel.setText(String.format(
+                "Player Score: %d",
+                playerScore
+        ));
+
+    }
 
 }
