@@ -1,6 +1,7 @@
 package view;
 
 import javafx.scene.layout.HBox;
+import model.GameDifficulty;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,15 +18,22 @@ public class GameOptionView extends JPanel {
     private final MyJPanel parentPanel;
     private Gameboard gameboard;
     public OptionButton returnToMain;
+    private GameDifficulty diff;
 
+    private JLabel timeLabel;
     private JLabel playerScoreLabel;
     private int playerScore;
+    private int turns;
 
     //, moveLeft, moveRight, moveDown, moveUp
     public GameOptionView(MyJPanel parentPanel) {
-
-        playerScore = 0;
-
+        
+       //So far only does the default setting. Needs to work with the difficulty slider.
+       diff = new GameDifficulty();
+       playerScore = 0;
+      
+       turns = diff.getTurns();
+       
         this.setLayout(new BorderLayout());
         this.setBackground(Color.DARK_GRAY);
 
@@ -40,13 +48,23 @@ public class GameOptionView extends JPanel {
         returnToMain.setText("Return to Options");
         box.add(returnToMain);
 
-        box.add(Box.createHorizontalStrut(850));
+        box.add(Box.createHorizontalStrut(400));
+        
+        timeLabel = new JLabel(String.format(
+                "Turns Left: %d",
+                turns));
+        timeLabel.setFont(new Font("Ariel", Font.PLAIN, 30));
+        timeLabel.setForeground(Color.CYAN);
+        box.add(timeLabel);
+        
+        box.add(Box.createHorizontalStrut(425));
 
-        playerScoreLabel = new JLabel("Player Score:  00");
+        playerScoreLabel = new JLabel("Player Score:  0");
         playerScoreLabel.setFont(new Font("Ariel", Font.PLAIN, 30));
         playerScoreLabel.setForeground(Color.CYAN);
         box.add(playerScoreLabel);
-
+       
+            
         this.add(box, BorderLayout.SOUTH);
 
 
@@ -103,6 +121,16 @@ public class GameOptionView extends JPanel {
 
     }
 
+    public void decrementTurns() {
+        
+        turns --;
+        
+        timeLabel.setText(String.format(
+                "Turns Left: %d",
+                turns
+        ));
+
+    }
     public void resetPlayerScore() {
         playerScore = 0;
 
@@ -111,6 +139,21 @@ public class GameOptionView extends JPanel {
                 playerScore
         ));
 
+    }
+    
+    public void resetTurns() {
+        turns = diff.getTurns();
+
+        timeLabel.setText(String.format(
+                "Turns Left: %d",
+                turns
+        ));
+
+    }
+    
+    public int getRemainingTurns()
+    {
+        return turns;
     }
 
 }
