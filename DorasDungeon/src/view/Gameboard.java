@@ -222,7 +222,13 @@ public class Gameboard extends JPanel{
     private void atEnd() {
 
         if (playerPositionX == endCoordinateX && playerPositionY == endCoordinateY) {
-            showGameOverMessage();
+            showWinMessage();
+            restartGame();
+        }
+        
+        else if((playerPositionX != endCoordinateX && playerPositionY != endCoordinateY) && view.getRemainingTurns() == 0)
+        {
+            showLoseMessage();
             restartGame();
         }
 
@@ -230,6 +236,7 @@ public class Gameboard extends JPanel{
 
     private void restartGame() {
         view.resetPlayerScore();
+        view.resetTurns();
 
         this.removeAll();
         //N = N + 10;
@@ -244,11 +251,11 @@ public class Gameboard extends JPanel{
 
     }
 
-    private void showGameOverMessage() {
+    private void showWinMessage() {
 
         JFrame gameOver = new JFrame("Game Over!");
         JPanel panel = new JPanel();
-        JLabel message = new JLabel("You won!");
+        JLabel message = new JLabel("You Win!");
 
         panel.setBackground(Color.DARK_GRAY);
         message.setBackground(Color.DARK_GRAY);
@@ -265,7 +272,29 @@ public class Gameboard extends JPanel{
         gameOver.setVisible(true);
 
     }
+    
+    private void showLoseMessage() {
 
+        JFrame gameOver = new JFrame("Game Over!");
+        JPanel panel = new JPanel();
+        JLabel message = new JLabel("You Lose!");
+
+        panel.setBackground(Color.DARK_GRAY);
+        message.setBackground(Color.DARK_GRAY);
+        message.setForeground(Color.CYAN);
+        message.setFont(new Font("Arial", Font.PLAIN, 25));
+
+        panel.add(message);
+
+        gameOver.getContentPane().add(panel, "Center");
+
+        gameOver.setBackground(Color.DARK_GRAY);
+        gameOver.setSize(400, 100);
+        gameOver.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        gameOver.setVisible(true);
+
+    }
+    
     public void movePlayerRight() {
         // if the point to the right is not filled
         if (playerPositionX + 1 > 0 && playerPositionX + 1 < N && !maze[playerPositionY][playerPositionX + 1]) {
@@ -275,7 +304,7 @@ public class Gameboard extends JPanel{
                 //  increment player score
                 view.incrementPlayerScore();
             }
-
+                view.decrementTurns();
             // moves player one point to the right
             gameLabels[playerPositionY][playerPositionX + 1].setIcon(player);
 
@@ -300,7 +329,9 @@ public class Gameboard extends JPanel{
                 //  increment player score
                 view.incrementPlayerScore();
             }
-
+               
+            view.decrementTurns();
+            
             // move player one point to the left
             gameLabels[playerPositionY][playerPositionX - 1].setIcon(player);
 
@@ -325,7 +356,9 @@ public class Gameboard extends JPanel{
                 //  increment player score
                 view.incrementPlayerScore();
             }
-
+            
+            view.decrementTurns();
+            
             // move player one point up
             gameLabels[playerPositionY - 1][playerPositionX].setIcon(player);
 
@@ -350,7 +383,8 @@ public class Gameboard extends JPanel{
                 //  increment player score
                 view.incrementPlayerScore();
             }
-
+            
+            view.decrementTurns();
             // move player one point up
             gameLabels[playerPositionY + 1][playerPositionX].setIcon(player);
 
