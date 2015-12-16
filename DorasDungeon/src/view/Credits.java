@@ -4,8 +4,11 @@
  * and open the template in the editor.
  */
 package view;
+import java.awt.Color;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -18,15 +21,28 @@ public class Credits extends JPanel
     JLabel ryan; 
     JLabel colin; 
     JLabel dan; 
-    JButton back; 
+    public JButton back; 
     
     Credits()
     {
+       this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+       this.setBackground(Color.DARK_GRAY);
+       
        label = new JLabel("TEAM 2");
-       katie = new JLabel("Katie Dodds: Options Menu");
-       ryan = new JLabel("Ryan Bass: Splash Artist, Instructions Panel");
-       colin = new JLabel("Colin Burns: Options Menu");
-       dan = new JLabel("Daniel Lavanier: Credits Panel");
+       label.setForeground(Color.CYAN);
+       
+       katie = new JLabel("Katie Dodds");
+       katie.setForeground(Color.CYAN);
+       
+       ryan = new JLabel("Ryan Bass");
+       ryan.setForeground(Color.CYAN);
+       
+       colin = new JLabel("Colin Burns");
+       colin.setForeground(Color.CYAN);
+       
+       dan = new JLabel("Daniel Lavanier");
+       dan.setForeground(Color.CYAN);
+       
        back = new JButton("Return");
        
        add(label);
