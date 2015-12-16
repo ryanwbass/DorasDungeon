@@ -6,16 +6,16 @@ package model;
 public class GameDifficulty {
 
     private int difficulty;
-    private int time;
+    private int turns;
 
     public GameDifficulty() {
         difficulty = 1;  // default easy mode
-        time = 60;
+        turns = 100;
     }
 
     public GameDifficulty(int level) {
         this.difficulty = level;
-        time = 75 - (difficulty * 15);
+        turns = 130 - (difficulty * 30);
     }
 
     public int getDifficulty() {
@@ -27,13 +27,8 @@ public class GameDifficulty {
         
     }
    
-    public int getTime()
+    public int getTurns()
     {
-        return time;
+        return turns;
     }
-    
-    public void countdown()
-    {
-        time--;
-    } 
 }
