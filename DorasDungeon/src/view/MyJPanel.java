@@ -66,8 +66,6 @@ public class MyJPanel extends JPanel implements ActionListener {
         
         public void clearTopPanel()
         {
-//            remove(mainPane);
-//            remove(optionsView);
             
             BorderLayout layout = (BorderLayout) this.getLayout();
             this.remove(layout.getLayoutComponent(BorderLayout.CENTER));
@@ -83,7 +81,10 @@ public class MyJPanel extends JPanel implements ActionListener {
             repaint();
         
         }
-        
+
+    public NavigationController getOptionsController() {
+        return optionsController;
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -117,13 +118,11 @@ public class MyJPanel extends JPanel implements ActionListener {
         else if(obj == buttonsPane.instructions){
             
             clearTopPanel();
-            System.out.println("test");
             add(instructionsView, BorderLayout.CENTER);
         }
         
         else if(obj == buttonsPane.credits)
         {
-            System.out.println("Test");
             clearTopPanel();
             add(creditsView, BorderLayout.CENTER);
         }
@@ -132,7 +131,6 @@ public class MyJPanel extends JPanel implements ActionListener {
         {
             
             clearTopPanel();
-            
             
             add(mainPane, BorderLayout.CENTER);
         }

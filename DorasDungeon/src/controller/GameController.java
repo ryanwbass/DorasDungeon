@@ -1,5 +1,6 @@
 package controller;
 
+import model.GameDifficulty;
 import view.GameOptionView;
 import view.MyJPanel;
 

@@ -57,9 +57,8 @@ public class NavigationController {
             // do stuff to start the game
             parentPanel.clearTopPanel(view);
 
-            GameOptionView gameboard = new GameOptionView(parentPanel);
+            GameOptionView gameboard = new GameOptionView(parentPanel, difficultySetting);
             GameController gameboardController = new GameController(gameboard, parentPanel);
-
             parentPanel.add(gameboard, BorderLayout.CENTER);
           
         }

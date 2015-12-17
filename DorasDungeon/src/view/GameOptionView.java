@@ -1,6 +1,5 @@
 package view;
 
-import javafx.scene.layout.HBox;
 import model.GameDifficulty;
 
 import javax.swing.*;
@@ -8,7 +7,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 /**
  * Created by Katie on 11/11/2015.
@@ -18,22 +16,19 @@ public class GameOptionView extends JPanel {
     private final MyJPanel parentPanel;
     private Gameboard gameboard;
     public OptionButton returnToMain;
-    private GameDifficulty diff;
 
     private JLabel timeLabel;
     private JLabel playerScoreLabel;
     private int playerScore;
-    private int turns;
+    private int gameTurns;
+    private GameDifficulty gameDifficulty;
 
-    //, moveLeft, moveRight, moveDown, moveUp
-    public GameOptionView(MyJPanel parentPanel) {
-        
-       //So far only does the default setting. Needs to work with the difficulty slider.
-       diff = new GameDifficulty();
-       playerScore = 0;
-      
-       turns = diff.getTurns();
-       
+    public GameOptionView(MyJPanel parentPanel, GameDifficulty gameDifficulty) {
+
+        this.gameDifficulty = gameDifficulty;
+        gameTurns = gameDifficulty.getTurns();
+        playerScore = 0;
+
         this.setLayout(new BorderLayout());
         this.setBackground(Color.DARK_GRAY);
 
@@ -52,7 +47,7 @@ public class GameOptionView extends JPanel {
         
         timeLabel = new JLabel(String.format(
                 "Turns Left: %d",
-                turns));
+                gameTurns));
         timeLabel.setFont(new Font("Ariel", Font.PLAIN, 30));
         timeLabel.setForeground(Color.CYAN);
         box.add(timeLabel);
@@ -122,12 +117,12 @@ public class GameOptionView extends JPanel {
     }
 
     public void decrementTurns() {
-        
-        turns --;
+
+        gameTurns --;
         
         timeLabel.setText(String.format(
                 "Turns Left: %d",
-                turns
+                gameTurns
         ));
 
     }
@@ -142,18 +137,21 @@ public class GameOptionView extends JPanel {
     }
     
     public void resetTurns() {
-        turns = diff.getTurns();
+        gameTurns = gameDifficulty.getTurns();
 
         timeLabel.setText(String.format(
                 "Turns Left: %d",
-                turns
+                gameTurns
         ));
 
     }
     
     public int getRemainingTurns()
     {
-        return turns;
+        return gameTurns;
     }
 
+    public void setGameDifficulty(GameDifficulty gameDifficulty) {
+        this.gameDifficulty = gameDifficulty;
+    }
 }

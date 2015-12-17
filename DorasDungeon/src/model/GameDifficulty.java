@@ -24,7 +24,7 @@ public class GameDifficulty {
 
     public void setDifficulty(int difficulty) {
         this.difficulty = difficulty;
-        
+        turns = 130 - (difficulty * 30);
     }
    
     public int getTurns()

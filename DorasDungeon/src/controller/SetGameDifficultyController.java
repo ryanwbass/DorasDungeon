@@ -43,7 +43,8 @@ public class SetGameDifficultyController {
         @Override
         public void actionPerformed(ActionEvent e) {
             model.setDifficulty(view.getSlider().getValue());
-            parentPanel.optionsController.setMostRecentOptionChange(String.format("Difficulty set to %d", model.getDifficulty()));
+
+            parentPanel.getOptionsController().setMostRecentOptionChange(String.format("Difficulty set to %d", model.getDifficulty()));
         }
     }
 }
